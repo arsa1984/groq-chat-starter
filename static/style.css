@@ -1,0 +1,86 @@
+body {
+    font-family: "Vazirmatn", sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 2rem;
+    direction: rtl;
+    text-align: right;
+    color: #333;
+  }
+  
+  h1 {
+    color: #222;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  textarea {
+    width: 100%;
+    height: 100px;
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+    margin-top: 1rem;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .chat-box {
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+    background-color: #f1f1f1;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .message {
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    max-width: 75%;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+  
+  .user {
+    background-color: #DCF8C6;
+    align-self: flex-end;
+    text-align: right;
+  }
+  
+  .bot {
+    background-color: #E6E6E6;
+    align-self: flex-start;
+    text-align: left;
+  }
+  

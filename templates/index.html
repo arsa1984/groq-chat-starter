@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>چت‌بات با Groq</title>
+  <link rel="stylesheet" href="/static/style.css?v=2">
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>  chet chat </h1>
+    <div id="chat-box" class="chat-box"></div>
+    <textarea id="message" placeholder="پیامت رو بنویس..."></textarea>
+    <button onclick="sendMessage()">ارسال</button>
+  </div>
+
+  <script>
+    async function sendMessage() {
+      const msg = document.getElementById("message").value;
+      const chatBox = document.getElementById("chat-box");
+
+      if (!msg.trim()) return;
+
+      // پیام کاربر
+      const userMsg = document.createElement("div");
+      userMsg.className = "message user";
+      userMsg.innerText = msg;
+      chatBox.appendChild(userMsg);
+
+      document.getElementById("message").value = "";
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      try {
+        const response = await fetch("/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ message: msg })
+        });
+
+        const data = await response.json();
+        const reply = data.reply || data.error || "خطا در پاسخ";
+
+        const botMsg = document.createElement("div");
+        botMsg.className = "message bot";
+        botMsg.innerText = reply;
+        chatBox.appendChild(botMsg);
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+      } catch (e) {
+        const errorMsg = document.createElement("div");
+        errorMsg.className = "message bot";
+        errorMsg.innerText = "خطا در ارتباط با سرور";
+        chatBox.appendChild(errorMsg);
+      }
+    }
+  </script>
+</body>
+</html>
